@@ -1,0 +1,3 @@
+[submodule "subModule/libcorrect"]
+	path = subModule/libcorrect
+	url = https://github.com/quiet/libcorrect.git
