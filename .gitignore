@@ -96,3 +96,12 @@ CMakeLists.txt.user*
 out/
 *build*/
 install/
+
+# 自动整理的 SDK 文件由构建流程生成。
+/core/api/bin/
+/core/api/lib/
+/core/api/include/
+/core/api/licenses/
+
+# CLI 安装目录由 CMake install 生成。
+/d2i_install/

@@ -1,0 +1,6 @@
+add_executable(screen_codec source/main.cpp source/cli.cpp)
+target_include_directories(screen_codec PRIVATE include)
+target_link_libraries(screen_codec PRIVATE data2img_core)
+target_compile_options(screen_codec PRIVATE /W4 /utf-8 /permissive-)
+target_compile_definitions(screen_codec PRIVATE NOMINMAX WIN32_LEAN_AND_MEAN)
+set_target_properties(screen_codec PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/bin")
