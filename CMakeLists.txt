@@ -57,3 +57,9 @@ foreach(cvTarget IN LISTS D2I_INSTALL_CV)
         endif()
     endif()
 endforeach()
+
+# 可选择关闭 GUI，保留原有 CLI 与核心库的独立构建能力。
+option(D2I_BUILD_GUI "Build the Qt6 Widgets GUI" ON)
+if(D2I_BUILD_GUI)
+    add_subdirectory(gui)
+endif()

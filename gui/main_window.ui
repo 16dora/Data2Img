@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry"><rect><x>0</x><y>0</y><width>880</width><height>680</height></rect></property>
+  <property name="minimumSize"><size><width>640</width><height>520</height></size></property>
+  <property name="windowTitle"><string>Data2Img</string></property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="layout_main">
+    <property name="leftMargin"><number>16</number></property>
+    <property name="topMargin"><number>16</number></property>
+    <property name="rightMargin"><number>16</number></property>
+    <property name="bottomMargin"><number>8</number></property>
+    <property name="spacing"><number>12</number></property>
+    <item>
+     <widget class="QTabWidget" name="tab_pages">
+      <property name="currentIndex"><number>0</number></property>
+      <widget class="QWidget" name="page_encode">
+       <attribute name="title"><string>Encode</string></attribute>
+       <layout class="QVBoxLayout" name="layout_encode">
+        <property name="spacing"><number>10</number></property>
+        <item>
+         <layout class="QHBoxLayout" name="layout_input">
+          <item><widget class="QLabel" name="label_input"><property name="text"><string>输入文件</string></property></widget></item>
+          <item><spacer name="space_input"><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer></item>
+          <item><widget class="QPushButton" name="btn_selectInput"><property name="text"><string>选择文件…</string></property></widget></item>
+         </layout>
+        </item>
+        <item>
+         <widget class="DropTextEdit" name="pt_inputFile">
+          <property name="minimumSize"><size><width>0</width><height>64</height></size></property>
+          <property name="maximumSize"><size><width>16777215</width><height>88</height></size></property>
+          <property name="readOnly"><bool>true</bool></property>
+          <property name="lineWrapMode"><enum>QPlainTextEdit::WidgetWidth</enum></property>
+          <property name="placeholderText"><string>选择或拖入一个文件，绝对路径将在此自动换行显示</string></property>
+          <property name="accessibleName"><string>编码输入文件</string></property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="group_params">
+          <property name="title"><string>编码参数</string></property>
+          <layout class="QGridLayout" name="layout_params">
+           <property name="horizontalSpacing"><number>12</number></property>
+           <property name="verticalSpacing"><number>10</number></property>
+           <item row="0" column="0"><widget class="QLabel" name="label_width"><property name="text"><string>图片宽度</string></property><property name="buddy"><cstring>sbox_width</cstring></property></widget></item>
+           <item row="0" column="1"><widget class="QSpinBox" name="sbox_width"><property name="suffix"><string> px</string></property><property name="minimum"><number>384</number></property><property name="maximum"><number>16384</number></property><property name="singleStep"><number>1</number></property><property name="value"><number>3840</number></property></widget></item>
+           <item row="0" column="2"><widget class="QLabel" name="label_height"><property name="text"><string>图片高度</string></property><property name="buddy"><cstring>sbox_height</cstring></property></widget></item>
+           <item row="0" column="3"><widget class="QSpinBox" name="sbox_height"><property name="suffix"><string> px</string></property><property name="minimum"><number>128</number></property><property name="maximum"><number>16384</number></property><property name="singleStep"><number>1</number></property><property name="value"><number>2060</number></property></widget></item>
+           <item row="1" column="0"><widget class="QLabel" name="label_cell"><property name="text"><string>色块边长</string></property><property name="buddy"><cstring>sbox_cell</cstring></property></widget></item>
+           <item row="1" column="1"><widget class="QSpinBox" name="sbox_cell"><property name="suffix"><string> px</string></property><property name="minimum"><number>1</number></property><property name="maximum"><number>32</number></property><property name="singleStep"><number>1</number></property><property name="value"><number>2</number></property></widget></item>
+           <item row="1" column="2" colspan="2"><widget class="QCheckBox" name="check_overwrite"><property name="text"><string>允许覆盖已有图片</string></property><property name="checked"><bool>false</bool></property></widget></item>
+           <item row="2" column="0"><widget class="QLabel" name="label_output"><property name="text"><string>输出目录</string></property><property name="buddy"><cstring>le_outputDir</cstring></property></widget></item>
+           <item row="2" column="1" colspan="2"><widget class="QLineEdit" name="le_outputDir"><property name="placeholderText"><string>选择目录或输入待创建的目录路径</string></property><property name="clearButtonEnabled"><bool>true</bool></property><property name="accessibleName"><string>图片输出目录</string></property></widget></item>
+           <item row="2" column="3"><widget class="QPushButton" name="btn_selectOutput"><property name="text"><string>选择目录…</string></property></widget></item>
+           <item row="3" column="0" colspan="4"><widget class="QLabel" name="label_layoutHint"><property name="text"><string>总像素不超过 6400 万；参数组合还需满足协议容量要求。</string></property><property name="wordWrap"><bool>true</bool></property></widget></item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="layout_encodeAction">
+          <item><widget class="QLabel" name="label_result"><property name="text"><string>生成图片路径 / 错误信息</string></property></widget></item>
+          <item><spacer name="space_encode"><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer></item>
+          <item><widget class="QPushButton" name="btn_encode"><property name="text"><string>Encode</string></property><property name="minimumSize"><size><width>110</width><height>32</height></size></property></widget></item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QPlainTextEdit" name="pt_encodeResult">
+          <property name="readOnly"><bool>true</bool></property>
+          <property name="lineWrapMode"><enum>QPlainTextEdit::NoWrap</enum></property>
+          <property name="horizontalScrollBarPolicy"><enum>Qt::ScrollBarAsNeeded</enum></property>
+          <property name="verticalScrollBarPolicy"><enum>Qt::ScrollBarAsNeeded</enum></property>
+          <property name="placeholderText"><string>编码成功后，每行显示一张图片的绝对路径</string></property>
+          <property name="accessibleName"><string>编码结果</string></property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_decode">
+       <attribute name="title"><string>Decode</string></attribute>
+       <layout class="QVBoxLayout" name="layout_decode">
+        <property name="spacing"><number>10</number></property>
+        <item>
+         <layout class="QHBoxLayout" name="layout_images">
+          <item><widget class="QLabel" name="label_images"><property name="text"><string>输入图片 / 执行结果</string></property></widget></item>
+          <item><spacer name="space_images"><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer></item>
+          <item><widget class="QPushButton" name="btn_selectImages"><property name="text"><string>选择图片…</string></property></widget></item>
+          <item><widget class="QPushButton" name="btn_clear"><property name="text"><string>清空列表</string></property></widget></item>
+         </layout>
+        </item>
+        <item><widget class="QLabel" name="label_decodeHint"><property name="text"><string>支持多选或拖入多张 PNG / JPG / JPEG；重复文件自动忽略，每个路径占一行。</string></property><property name="wordWrap"><bool>true</bool></property></widget></item>
+        <item>
+         <widget class="DropTextEdit" name="pt_decodeFiles">
+          <property name="readOnly"><bool>true</bool></property>
+          <property name="lineWrapMode"><enum>QPlainTextEdit::NoWrap</enum></property>
+          <property name="horizontalScrollBarPolicy"><enum>Qt::ScrollBarAsNeeded</enum></property>
+          <property name="verticalScrollBarPolicy"><enum>Qt::ScrollBarAsNeeded</enum></property>
+          <property name="placeholderText"><string>选择或拖入图片以追加，路径和错误信息在此显示</string></property>
+          <property name="accessibleName"><string>解码图片列表和结果</string></property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="layout_decodeAction">
+          <item><widget class="QLabel" name="label_saveHint"><property name="text"><string>点击 Decode 后选择恢复文件的名称及扩展名。</string></property><property name="wordWrap"><bool>true</bool></property></widget></item>
+          <item><spacer name="space_decode"><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer></item>
+          <item><widget class="QPushButton" name="btn_decode"><property name="text"><string>Decode</string></property><property name="minimumSize"><size><width>110</width><height>32</height></size></property></widget></item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+    <item><widget class="QProgressBar" name="progress_busy"><property name="minimum"><number>0</number></property><property name="maximum"><number>0</number></property><property name="textVisible"><bool>false</bool></property></widget></item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <customwidgets>
+  <customwidget><class>DropTextEdit</class><extends>QPlainTextEdit</extends><header>drop_text_edit.h</header></customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>tab_pages</tabstop><tabstop>btn_selectInput</tabstop><tabstop>pt_inputFile</tabstop>
+  <tabstop>sbox_width</tabstop><tabstop>sbox_height</tabstop><tabstop>sbox_cell</tabstop>
+  <tabstop>check_overwrite</tabstop><tabstop>le_outputDir</tabstop><tabstop>btn_selectOutput</tabstop>
+  <tabstop>btn_encode</tabstop><tabstop>pt_encodeResult</tabstop><tabstop>btn_selectImages</tabstop>
+  <tabstop>btn_clear</tabstop><tabstop>pt_decodeFiles</tabstop><tabstop>btn_decode</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>
